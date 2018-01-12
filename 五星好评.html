@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        span{
+            cursor: pointer;
+            color: deeppink;
+            font-size:60px;
+        }
+     </style>
+</head>
+<body>
+<span>☆</span>
+<span>☆</span>
+<span>☆</span>
+<span>☆</span>
+<span>☆</span>
+ <!--<span>★️</span>-->
+ </body>
+<script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.js"></script>
+<script>
+
+    var index = -1 ;
+
+    $('span').on('mouseenter',function(){
+        $(this).html('★').prevAll().html('★');
+        $(this).nextAll().html('☆');
+    }).on('mouseleave',function(){
+        if(index >= 0){
+            $('span').eq(index).html('★').prevAll().html('★');
+            $('span').eq(index).nextAll().html('☆');
+        }else{
+            $('span').html('☆');
+        }
+    }).on('click',function(){
+        index = $(this).index();
+     })
+
+
+</script>
+</html>
