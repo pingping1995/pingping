@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        #box{
+            width: 450px;
+            /*height: 400px;*/
+            border:1px solid #ccc;
+            margin:100px auto;
+        }
+        textarea{
+            width: 430px;
+            height: 200px;
+            margin: 10px;
+         }
+        button{
+            display: block;
+            width: 200px;
+            height: 40px;
+            margin: 10px auto;
+        }
+        ul{
+            list-style: none;
+        }
+        li{
+            border-bottom:1px dashed #ccc ;
+            text-indent: 1em;
+        }
+        span{
+            display: block;
+        }
+        i{
+            float: right;
+            font-style:normal;
+            margin-top: -35px;
+            margin-right: 20px;
+        }
+    </style>
+</head>
+<body>
+<div id="box">
+    <textarea id="txt" ></textarea>
+    <button>点击发布</button>
+    <ul>
+        <!--<li>-->
+            <!--<span>asdfasdf</span>-->
+            <!--<span>2018-01-10 20:31周三</span>-->
+            <!--<i>删除</i>-->
+        <!--</li>-->
+    </ul>
+</div>
+</body>
+<script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.js"></script>
+<script>
+    var date = new Date;
+    var year = date.getFullYear();
+    var month = date.getMonth()+1;
+    var ri = date.getDate();
+    var hour = date.getHours();
+    var minutes = date.getMinutes();
+     var week = date.getDay();
+    var arr = ['星期日','星期一','星期二','星期三','星期四','星期五','星期六'];
+    function dateFormat(d) {
+        return d>=10?d:'0'+d;
+    }
+    var time = year +'年'+ dateFormat(month) +'月'+ dateFormat(ri)+'日' +dateFormat(hour)
+        +':'+dateFormat(minutes)+' '+arr[week];
+      $('button').on('click',function(){
+         var value = $('#txt').val();
+        var str = '';
+        str += '<span>'+ value +'</span>';
+        str += '<span>'+ time +'</span>';
+        str += '<i>删除</i>';
+        var li = $('<li>'+str+'</li>')
+        $('ul').prepend(li) ;
+
+
+        $('i').on('click',function(){
+            $(this).parent().remove();
+        });
+
+        $('#txt').val(' ');
+
+
+
+
+     })
+
+</script>
+</html>
